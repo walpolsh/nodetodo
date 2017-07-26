@@ -7,6 +7,9 @@ var setupController = require('./controllers/setupController');
 //^remember that its a function thats being returned from require
 //^^ this function returns the API end point
 
+var apiController = require('./controllers/apiController');
+
+// ^api CRUD endpoints
 var port = process.env.PORT || 3000;
 
 app.use('/assets', express.static(__dirname + '/public'));
@@ -19,7 +22,6 @@ mongoose.connect(config.getDbConnectionString());
 // ^^ this string contains the username and password
 
 setupController(app);
-
-
+apiController(app);
 
 app.listen(port);
