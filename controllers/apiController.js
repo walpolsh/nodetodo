@@ -36,19 +36,18 @@ module.exports = function (app) {
     // ^post a new todo inside an HTTP req
 
     if (req.body.id) {
-      //^ if it has an ID
+      //^ if the HTTP request body has an ID
 
       Todos.findByIdAndUpdate(req.body.id, {
         //^ find the ID in the Database and update the properties
         todo: req.body.todo,
         isDone: req.body.isDone,
-        hasAttachment: req.body.hasAttachment,
-        function(err, todo) {
+        hasAttachment: req.body.hasAttachment, },
+        function (err, todo) {
           if (err) throw err;
 
           res.send('Success');
-        },
-      });
+        });
     } else {
       // ^ if theres no ID
       var newTodo = Todos({
